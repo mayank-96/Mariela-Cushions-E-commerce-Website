@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: "Cormorant Garamond", serif;
+  background-color: #c9adc6;
+}
+
+/* NAVBAR */
+nav {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9.5rem;
+  background-color: white;
+}
+
+/* LOGO */
+.logo {
+  width: 120px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+/* MENU */
+.links {
+  display: flex;
+}
+
+.links ul {
+  list-style: none;
+  display: flex;
+}
+
+.links ul li {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #b08ead;
+  border-bottom: 4px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  padding: 2.6rem 1.3rem;
+}
+
+.links ul li:hover {
+  border-color: #c9adc6;
+}
+
+/* CART */
+.icon {
+  margin: auto;
+  margin-left: 3rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  width: 23px;
+}
+
+.icon img {
+  width: 100%;
+}
+
+/* Banner */
+.banner {
+  display: flex;
+  background-color: #c9adc6;
+  position: relative;
+  height: 110vh;
+  align-items: center;
+}
+
+/* IMAGE */
+.hero-image {
+  position: absolute;
+  width: 52.2rem;
+  left: 14.5%;
+  z-index: 8;
+}
+
+.hero-image img {
+  width: 100%;
+}
+
+/* INFO CARD */
+.hero-card {
+  z-index: 10;
+  position: absolute;
+  right: 10%;
+  height: max-content;
+  background-color: #b08ead;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 3rem;
+  padding-right: 5rem;
+  padding-block: 6.5rem;
+  gap: 2rem;
+}
+.hero-card .main {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.hero-card .sub {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.hero-card .underline {
+  width: max-content;
+  padding-bottom: 7px;
+  border-bottom: 2px solid #fff;
+  cursor: pointer;
+}
+
+/* DARK COLOR BOX */
+.sudo-box {
+  position: absolute;
+  height: 45vh;
+  width: 100%;
+  background-color: #d6bbd3;
+  bottom: 0;
+}
+
+/* ARROWS */
+.navigate {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  width: 100px;
+  bottom: 0;
+  right: 10%;
+}
+
+.navigate .back,
+.navigate .next {
+  padding: 10px 12px 10px 12px;
+  cursor: pointer;
+}
+
+.navigate .back {
+  background-color: #b095ad;
+}
+
+.navigate .next {
+  background-color: #b897b5;
+}
+
+.navigate img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 980px) {
+  /* NAVBAR */
+  nav {
+    height: 120px;
+    position: relative;
+    padding: 0 3.5rem;
+  }
+
+  /* LOGO */
+  .logo {
+    width: 117px;
+  }
+
+  /* MENU */
+  .links ul {
+    z-index: 15;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    gap: 0;
+  }
+  .links ul li {
+    padding-block: 1rem;
+    padding-left: 2rem;
+  }
+
+  .open {
+    transform: translateY(120px);
+  }
+
+  .close {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* HAMBURGER MENU ICON */
+  .burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+
+  .line {
+    width: 15px;
+    height: 2.4px;
+    background-color: #c9adc6;
+  }
+
+  /* CART ICON */
+  .icon {
+    margin-left: 1.5rem;
+    transform: translateY(2px);
+  }
+
+  /* BANNER */
+  .banner {
+    position: static;
+    flex-direction: column;
+    height: max-content;
+  }
+
+  .hero-image,
+  .hero-card,
+  .navigate {
+    position: static;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-card {
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-block: 4rem;
+    gap: 1rem;
+  }
+
+  .hero-card .main {
+    font-size: 2rem;
+  }
+
+  .hero-card .sub {
+    font-size: 10px;
+  }
+  .sudo-box {
+    height: 0;
+  }
+
+  .navigate {
+    z-index: 8;
+    display: flex;
+    width: 80px;
+    padding-top: 10px;
+  }
+
+  .navigate .back,
+  .navigate .next {
+    padding: 10px 12px 10px 12px;
+    cursor: pointer;
+  }
+}
