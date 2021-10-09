@@ -78,19 +78,19 @@ nav {
 }
 
 /* IMAGE */
-.hero-image {
+.banner-image {
   position: absolute;
   width: 52.2rem;
   left: 14.5%;
   z-index: 8;
 }
 
-.hero-image img {
+.banner-image img {
   width: 100%;
 }
 
 /* INFO CARD */
-.hero-card {
+.banner-info {
   z-index: 10;
   position: absolute;
   right: 10%;
@@ -101,17 +101,17 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   padding-left: 3rem;
-  padding-right: 5rem;
+  padding-right: 6rem;
   padding-block: 6.5rem;
   gap: 2rem;
 }
-.hero-card .main {
+.banner-main {
   color: #fff;
   font-size: 3rem;
   font-weight: 600;
 }
 
-.hero-card .sub {
+.banner-sub {
   font-family: Roboto, sans-serif;
   color: #fff;
   font-size: 13.5px;
@@ -120,7 +120,7 @@ nav {
   text-transform: uppercase;
 }
 
-.hero-card .underline {
+.underline {
   width: max-content;
   padding-bottom: 7px;
   border-bottom: 2px solid #fff;
@@ -137,7 +137,7 @@ nav {
 }
 
 /* ARROWS */
-.navigate {
+.banner-nav {
   position: absolute;
   z-index: 8;
   display: flex;
@@ -146,22 +146,159 @@ nav {
   right: 10%;
 }
 
-.navigate .back,
-.navigate .next {
+.banner-back,
+.banner-next {
   padding: 10px 12px 10px 12px;
   cursor: pointer;
 }
 
-.navigate .back {
+.banner-back {
   background-color: #b095ad;
 }
 
-.navigate .next {
+.banner-next {
   background-color: #b897b5;
 }
 
-.navigate img {
+.banner-back:hover {
+  background-color: #be9fbb;
+}
+
+.banner-next:hover {
+  background-color: #c29ebf;
+}
+
+.banner-nav img {
   width: 100%;
+}
+
+/* INTRO */
+.intro {
+  background-color: #fff;
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* INTRO DETAILS */
+.intro-details {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.details-sub {
+  font-family: Roboto, sans-serif;
+  color: #b08ead;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.details-main {
+  color: #5f4d5d;
+  font-size: 26px;
+  line-height: 38px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+
+.details-btn {
+  font-family: Roboto, sans-serif;
+  color: #b99bb6;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid #b99bb6;
+  padding: 1rem 1.4rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.details-btn:hover {
+  background-color: #b99bb6;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* INTRO CARDS */
+.intro-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.intro-card {
+  width: 380px;
+  background-color: #ceb3cb;
+}
+
+.intro-card img {
+  width: 100%;
+}
+
+.text-sub {
+  color: #fff;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.text-btn {
+  color: #fff;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+}
+
+/* ABOUT ME */
+.about-image {
+  position: absolute;
+  width: 33.5rem;
+  right: 23%;
+  z-index: 8;
+}
+
+.about-image img {
+  width: 100%;
+}
+
+.about-info {
+  z-index: 10;
+  position: absolute;
+  left: 18%;
+  height: max-content;
+  background-color: #b08ead;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-block: 6.5rem;
+  gap: 2rem;
 }
 
 @media only screen and (max-width: 980px) {
@@ -232,17 +369,16 @@ nav {
     height: max-content;
   }
 
-  .hero-image,
-  .hero-card,
-  .navigate {
+  .banner-image {
     position: static;
   }
 
-  .hero-image {
+  .banner-image {
     width: 100%;
   }
 
-  .hero-card {
+  .banner-info {
+    position: static;
     width: 100%;
     padding-left: 3rem;
     padding-right: 5rem;
@@ -250,27 +386,78 @@ nav {
     gap: 1rem;
   }
 
-  .hero-card .main {
+  .banner-main {
     font-size: 2rem;
   }
 
-  .hero-card .sub {
+  .banner-sub {
     font-size: 10px;
   }
   .sudo-box {
     height: 0;
   }
 
-  .navigate {
-    z-index: 8;
-    display: flex;
-    width: 80px;
-    padding-top: 10px;
+  .banner-nav {
+    display: none;
+    visibility: hidden;
   }
 
-  .navigate .back,
-  .navigate .next {
-    padding: 10px 12px 10px 12px;
-    cursor: pointer;
+  /* INTRO */
+  .intro {
+    gap: 3rem;
+    height: max-content;
+    padding-block: 3rem;
+  }
+
+  /* INTRO DETAILS */
+  .intro-details {
+    width: 65%;
+    gap: 1.5rem;
+  }
+
+  .details-main {
+    text-align: center;
+  }
+
+  /* INTRO CARDS */
+  .intro-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  .intro-card {
+    width: 100%;
+  }
+
+  .text-sub {
+    font-size: 20px;
+  }
+
+  .text-btn {
+    font-size: 17px;
+  }
+
+  .intro-text {
+    gap: 0.3rem;
+    padding: 1rem 2rem;
+  }
+
+  /* ABOUT ME */
+  .about-image {
+    position: static;
+  }
+
+  .about-image {
+    width: 100%;
+  }
+  .about-info {
+    position: static;
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-block: 4rem;
+    gap: 1rem;
   }
 }
