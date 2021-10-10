@@ -110,7 +110,7 @@ nav {
   display: flex;
   background-color: #d6bbd3;
   position: relative;
-  height: 110vh;
+  height: 100vh;
   align-items: center;
 }
 
@@ -408,7 +408,7 @@ hr {
   border-bottom: 0.5px solid #d6bbd3;
 }
 
-/* BANNER 2 */
+/* PRODUCT BANNER */
 .banner-image-2 {
   position: absolute;
   width: 535px;
@@ -656,7 +656,7 @@ hr {
   color: #fff;
   font-family: Roboto, sans-serif;
   font-size: 12px;
-  padding: 21px 50px;
+  padding: 22.7px 50px;
   transition: all 0.2s ease;
   background-color: #ceb3cb;
   cursor: pointer;

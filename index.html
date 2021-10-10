@@ -27,7 +27,7 @@
         <ul id="menu" class="close">
           <a href="index.html"><li>Home</li></a>
           <a href="#about"><li>About me</li></a>
-          <a href=""><li>Products</li></a>
+          <a href="#products"><li>Products</li></a>
           <a href="#contact"><li>Contact me</li></a>
         </ul>
         <div class="burger" onclick="toggleMenu();">
@@ -43,9 +43,13 @@
     </nav>
 
     <!-- BANNER -->
-    <div class="banner">
+    <div class="banner" id="banner">
       <div class="banner-image">
-        <img src="./images/hero-1.jpg" alt="hero-image" />
+        <img
+          src="./images/hero-banner-1.jpg"
+          alt="hero-image"
+          id="hero-banner"
+        />
       </div>
       <div class="banner-info">
         <p class="banner-sub">New</p>
@@ -59,8 +63,12 @@
       </div>
       <div class="sudo-box"></div>
       <div class="banner-nav">
-        <p class="banner-back"><img src="./images/back.png" alt="back" /></p>
-        <p class="banner-next"><img src="./images/next.png" alt="next" /></p>
+        <a href="#banner" class="banner-back" onclick="changeBanner('back');">
+          <img src="./images/back.png" alt="back" />
+        </a>
+        <a href="#banner" class="banner-next" onclick="changeBanner('next');">
+          <img src="./images/next.png" alt="next" />
+        </a>
       </div>
     </div>
 
@@ -179,7 +187,7 @@
       </div>
     </div>
 
-    <!-- BANNER -->
+    <!-- PRODUCT BANNER -->
     <div class="banner" id="product-banner">
       <div class="banner-image-2">
         <img src="./images/hero-3.jpg" alt="hero-image" />
@@ -379,7 +387,7 @@
         <ul>
           <a href="index.html"><li>Home</li></a>
           <a href="#about"><li>About me</li></a>
-          <a href=""><li>Products</li></a>
+          <a href="#products"><li>Products</li></a>
           <a href="#contact"><li>Contact me</li></a>
         </ul>
       </div>
