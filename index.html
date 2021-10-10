@@ -8,22 +8,27 @@
     <title>Mariela Cushions</title>
   </head>
   <body>
+    <!-- GO TO TOP BUTTON -->
+    <button onclick="topFunction()" id="top-btn" title="Go to top">
+      <img src="./images/top.png" alt="Go to top" />
+    </button>
+
     <!-- NAVBAR -->
     <nav>
       <!-- LOGO -->
-      <div class="logo">
+      <a href="index.html" class="logo">
         <img
           src="https://assets.website-files.com/5bd86c52b7abc5114b2ed43c/5bd8aad816e1ead4175ca869_Logo.png"
           alt="logo"
         />
-      </div>
+      </a>
       <!-- MENU -->
       <div class="links">
         <ul id="menu" class="close">
-          <li>Home</li>
-          <li>About me</li>
-          <li>Products</li>
-          <li>Contact me</li>
+          <a href="index.html"><li>Home</li></a>
+          <a href="#about"><li>About me</li></a>
+          <a href=""><li>Products</li></a>
+          <a href="#contact"><li>Contact me</li></a>
         </ul>
         <div class="burger" onclick="toggleMenu();">
           <div class="line"></div>
@@ -48,7 +53,9 @@
           Spring Cushion<br />
           Collection 2021
         </p>
-        <p class="banner-sub underline">Buy now</p>
+        <a href="#product-banner"
+          ><p class="banner-sub underline">Buy now</p></a
+        >
       </div>
       <div class="sudo-box"></div>
       <div class="banner-nav">
@@ -67,42 +74,42 @@
           Cushions, since I have memory I always had a tendency to design and
           illustration.
         </p>
-        <div class="details-btn">Learn more</div>
+        <a href="#about"><div class="details-btn">Learn more</div></a>
       </div>
       <!-- INTRO CARDS -->
       <div class="intro-cards">
         <div class="intro-card">
           <img src="./images/aboutme.png" alt="About Me" />
           <div class="intro-text">
-            <p class="text-sub">About me</p>
-            <p class="text-btn">Learn more</p>
+            <a href="#about"><p class="text-sub">About me</p></a>
+            <a href="#about"><p class="text-btn">Learn more</p></a>
           </div>
         </div>
         <div class="intro-card">
           <img src="./images/myproducts.png" alt="My Products" />
           <div class="intro-text">
-            <p class="text-sub">My products</p>
-            <p class="text-btn">Learn more</p>
+            <a href="#product-banner"><p class="text-sub">My products</p></a>
+            <a href="#product-banner"><p class="text-btn">Learn more</p></a>
           </div>
         </div>
         <div class="intro-card">
           <img src="./images/contactme.png" alt="Contact Me" />
           <div class="intro-text">
-            <p class="text-sub">Contact me</p>
-            <p class="text-btn">Learn more</p>
+            <a href="#contact"><p class="text-sub">Contact me</p></a>
+            <a href="#contact"><p class="text-btn">Learn more</p></a>
           </div>
         </div>
       </div>
     </div>
     <!-- ABOUT ME -->
-    <div class="banner">
+    <div class="banner" id="about">
       <div class="about-info">
         <p class="banner-sub">About me</p>
         <p class="banner-main">
           I'm a trendy<br />
           Cushion Designer
         </p>
-        <p class="banner-sub underline">Learn more</p>
+        <a href="#content"><p class="banner-sub underline">Learn more</p></a>
       </div>
       <div class="about-image">
         <img src="./images/aboutme-large.png" alt="About me" />
@@ -110,7 +117,7 @@
     </div>
 
     <!-- CONTENT SECTION -->
-    <div class="content-section">
+    <div class="content-section" id="content">
       <!-- CARD-1 -->
       <div class="content-card">
         <div class="content-body">
@@ -173,7 +180,7 @@
     </div>
 
     <!-- BANNER -->
-    <div class="banner">
+    <div class="banner" id="product-banner">
       <div class="banner-image-2">
         <img src="./images/hero-3.jpg" alt="hero-image" />
       </div>
@@ -183,12 +190,12 @@
           Spring Cushion<br />
           Collection 2021
         </p>
-        <p class="banner-sub underline">Buy now</p>
+        <a href="#products"><p class="banner-sub underline">Buy now</p></a>
       </div>
     </div>
 
     <!-- PRODUCTS -->
-    <div class="products">
+    <div class="products" id="products">
       <div class="product-card">
         <img src="./images/PlatedCushion.jpg" alt="Plated Cushion" />
         <p class="product-name">Plated Cushion</p>
@@ -222,7 +229,7 @@
     </div>
 
     <!-- CONTACT ME -->
-    <div class="contact">
+    <div class="contact" id="contact">
       <div class="contact-details">
         <div class="contact-detail">
           <p class="sub">Email</p>
@@ -361,32 +368,51 @@
     <!-- FOOTER -->
     <div class="footer">
       <!-- FOOTER LOGO -->
-      <div class="footer-logo">
+      <a href="index.html" class="footer-logo">
         <img
           src="https://assets.website-files.com/5bd86c52b7abc5114b2ed43c/5bd8ee3cd39e269b7bb8c128_Logo-w.png"
           alt="logo"
         />
-      </div>
+      </a>
       <!-- FOOTER MENU -->
       <div class="footer-menu">
         <ul>
-          <li>Home</li>
-          <li>About me</li>
-          <li>Products</li>
-          <li>Contact me</li>
+          <a href="index.html"><li>Home</li></a>
+          <a href="#about"><li>About me</li></a>
+          <a href=""><li>Products</li></a>
+          <a href="#contact"><li>Contact me</li></a>
         </ul>
       </div>
       <!-- SOCIAL ICONS -->
       <div class="social">
-        <div class="social-icon">
+        <a
+          href="https://www.facebook.com/mayank.pagar.9/"
+          class="social-icon"
+          target="_blank"
+        >
           <img src="./images/facebook.png" alt="Facebook Icon" />
-        </div>
-        <div class="social-icon">
+        </a>
+        <a
+          href="https://www.instagram.com/mayankp09__/"
+          class="social-icon"
+          target="_blank"
+        >
           <img src="./images/instagram.png" alt="Instagram Icon" />
-        </div>
-        <div class="social-icon">
+        </a>
+        <a
+          href="https://www.linkedin.com/in/mayank-pagar/"
+          class="social-icon"
+          target="_blank"
+        >
+          <img src="./images/linkedin.png" alt="Linkedin Icon" />
+        </a>
+        <a
+          href="https://twitter.com/mayankp09_"
+          class="social-icon"
+          target="_blank"
+        >
           <img src="./images/twitter.png" alt="Twitter icon" />
-        </div>
+        </a>
       </div>
     </div>
     <!-- SCRIPT -->

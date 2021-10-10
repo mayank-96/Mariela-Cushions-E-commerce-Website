@@ -13,6 +13,35 @@ body {
   background-color: #c9adc6;
 }
 
+a {
+  text-decoration: none;
+}
+
+/* GO TO TOP */
+#top-btn {
+  width: 44px;
+  height: 44px;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #b08ead;
+  cursor: pointer;
+  padding: 13px;
+  border-radius: 50%;
+}
+
+#top-btn:hover {
+  background-color: #c29dbf;
+}
+
+#top-btn img {
+  width: 100%;
+}
+
 /* NAVBAR */
 nav {
   margin-top: 4px;
@@ -49,6 +78,14 @@ nav {
   border-bottom: 4px solid rgba(0, 0, 0, 0);
   cursor: pointer;
   padding: 2.6rem 1.3rem;
+}
+
+.links a:link {
+  color: #b08ead;
+}
+
+.links a:visited {
+  color: #b08ead;
 }
 
 .links ul li:hover {
@@ -683,6 +720,7 @@ hr {
   justify-content: space-between;
   align-items: center;
   background-color: #c9adc6;
+  gap: 2rem;
 }
 
 /* FOOTER LOGO */
