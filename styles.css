@@ -526,6 +526,12 @@ hr {
   font-size: 15px;
 }
 
+.input input:focus,
+.input textarea:focus {
+  color: #fff;
+  outline: none;
+}
+
 .form .btn {
   color: #fff;
   font-family: Roboto, sans-serif;
@@ -533,6 +539,13 @@ hr {
   padding: 0.9rem 4rem;
   border: 1px solid #fff;
   width: max-content;
+  transition: all 0.2s ease;
+}
+
+.form .btn:hover {
+  background-color: #fff;
+  color: #ceb3cb;
+  transition: all 0.2s ease;
 }
 
 /* RESPONSIVE */
@@ -745,5 +758,33 @@ hr {
 
   .product-card {
     width: 100%;
+  }
+
+  /* CONTACT*/
+  .contact {
+    flex-direction: column;
+    padding: 4rem 1.5rem;
+    gap: 4rem;
+  }
+
+  /* CONTACT DETAILS */
+  .contact-detail {
+    gap: 0.5rem;
+  }
+
+  /* CONTACT ME */
+  .contact-me {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  /* FORM */
+  .contact-form {
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .field {
+    gap: 1rem;
   }
 }
