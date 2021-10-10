@@ -105,6 +105,131 @@ nav {
   width: 100%;
 }
 
+/* BANNER */
+.banner {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  height: 80vh;
+  width: 70%;
+  background-color: #b08ead;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* IMAGE SLIDER */
+.img-slider {
+  background-image: url("../images/GreenCushion.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 90vh;
+  height: 80vh;
+}
+
+/* SHOP */
+.shop {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vh;
+  padding-right: 2rem;
+  padding-block: 3rem;
+  height: 100%;
+}
+
+/* DETAILS */
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.shop .name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.shop .price {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 1.2px;
+}
+
+.shop .description {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  font-size: 1rem;
+}
+
+/* FORM */
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.label {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  /* letter-spacing: 1.2px; */
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+
+input::placeholder {
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+}
+
+input:focus {
+  color: #fff;
+  outline: none;
+}
+
+.form .btn {
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  padding: 0.9rem 4rem;
+  text-align: center;
+  background-color: #ceb3cb;
+  transition: all 0.2s ease;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.form .btn:hover {
+  background-color: #fff;
+  color: #ceb3cb;
+  transition: all 0.2s ease;
+}
+
 /* FEATURES */
 .features {
   display: flex;

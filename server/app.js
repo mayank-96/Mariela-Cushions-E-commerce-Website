@@ -13,8 +13,14 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
 const cors = require("cors");
 app.use(cors());
 
-const authRouter = require("./routes/auth");
-app.use("/api/auth", authRouter);
+const bannerRouter = require("./routes/banners");
+app.use("/api/banner", bannerRouter);
+
+const cartRouter = require("./routes/carts");
+app.use("/api/cart", cartRouter);
+
+const productRouter = require("./routes/products");
+app.use("/api/product", productRouter);
 
 app.listen(9000, () => {
   console.log("Server started");
