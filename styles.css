@@ -548,6 +548,191 @@ hr {
   transition: all 0.2s ease;
 }
 
+/* NEWSLETTER */
+.newsletter {
+  height: max-content;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding-block: 5rem;
+}
+
+.newsletter .sub {
+  font-family: Roboto, sans-serif;
+  color: #b08ead;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.newsletter .main {
+  color: #5f4d5d;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+
+/* NEWS FORM */
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.news-input {
+  width: 100%;
+  padding: 19px 24px;
+  border: 1px solid #ceb3cb;
+  border-left: none;
+  background-color: transparent;
+}
+
+.news-input:first-child {
+  border: 1px solid #ceb3cb;
+}
+
+.news-input input {
+  border: none;
+  font-size: 16px;
+}
+
+.news-input ::placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: #ceb3cb;
+  font-size: 18px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.news-input input:focus {
+  outline: none;
+}
+
+.news-btn {
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  padding: 21px 50px;
+  transition: all 0.2s ease;
+  background-color: #ceb3cb;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.news-btn:hover {
+  background-color: #b08ead;
+  transition: all 0.2s ease;
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 20rem;
+  height: max-content;
+  background-color: #d6bbd3;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feature-icon {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: #ba9fb7;
+}
+
+.feature-icon img {
+  width: 100%;
+}
+
+.feature-name {
+  color: white;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.feature-tag {
+  font-family: Roboto, sans-serif;
+  color: white;
+  font-size: 17px;
+}
+
+/* FOOTER */
+.footer {
+  height: max-content;
+  padding: 2rem 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c9adc6;
+}
+
+/* FOOTER LOGO */
+.footer-logo {
+  width: 100px;
+}
+
+.footer-logo img {
+  width: 100%;
+}
+
+/* FOOTER MENU */
+.footer-menu {
+  width: 70%;
+}
+
+.footer-menu ul {
+  list-style: none;
+  display: flex;
+}
+
+.footer-menu ul li {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: 4px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  padding: 1rem 1rem;
+}
+
+/* SOCIAL ICONS */
+.social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #d6bbd3;
+  padding: 9px;
+}
+
+.social-icon img {
+  width: 100%;
+}
+
 /* RESPONSIVE */
 @media only screen and (max-width: 980px) {
   /* NAVBAR */
@@ -763,7 +948,7 @@ hr {
   /* CONTACT*/
   .contact {
     flex-direction: column;
-    padding: 4rem 1.5rem;
+    padding: 4rem 2rem;
     gap: 4rem;
   }
 
@@ -785,6 +970,55 @@ hr {
   }
 
   .field {
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+
+  /* NEWS FORM */
+  .newsletter-form {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .news-input {
+    border: 1px solid #ceb3cb;
+  }
+
+  .news-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* FEATURES */
+  .features {
+    flex-direction: column;
+    padding: 3rem 1rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 3rem 1rem;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* FOOTER LOGO */
+  .footer-logo {
+    width: 120px;
+  }
+
+  /* FOOTER MENU */
+  .footer-menu {
+    width: 100%;
+  }
+
+  .footer-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .footer-menu ul li {
+    padding: 0;
   }
 }
