@@ -313,8 +313,8 @@ nav {
 /* ABOUT ME */
 .about-image {
   position: absolute;
-  width: 33.5rem;
-  right: 23%;
+  width: 30rem;
+  right: 28%;
   z-index: 8;
 }
 
@@ -411,8 +411,8 @@ hr {
 /* PRODUCT BANNER */
 .banner-image-2 {
   position: absolute;
-  width: 535px;
-  left: 23%;
+  width: 480px;
+  left: 27%;
   z-index: 8;
 }
 
