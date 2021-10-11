@@ -133,5 +133,3 @@ function createProductCard(data) {
     .join("");
   return products;
 }
-
-// HANDLE PRODUCT ---------------------------------------------------------
