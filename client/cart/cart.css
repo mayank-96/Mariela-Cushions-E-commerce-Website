@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: "Cormorant Garamond", serif;
+  background-color: #c9adc6;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* CART */
+.cart-window {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 25;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.637);
+}
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #fff;
+  width: 31.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* CART NAV */
+.cart-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.cart-nav p {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.cart-close {
+  width: 14px;
+}
+
+.cart-close img {
+  width: 100%;
+}
+
+/* CART ITEMS */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem 1.5rem;
+  height: 80vh;
+  gap: 1.5rem;
+  overflow-y: scroll;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  height: max-content;
+}
+
+.cart-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 11vh;
+  height: 11vh;
+  position: relative;
+}
+
+#silver .cart-image {
+  background-image: url("../images/SilverCushion.jpg");
+}
+
+#pink .cart-image {
+  background-image: url("../images/PinkCushion.jpg");
+}
+
+.cart-details {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 0.3rem;
+}
+
+.cart-details .name {
+  color: #5f4d5d;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.amount {
+  font-family: Roboto, sans-serif;
+  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.cart-details .remove {
+  font-family: Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
+  color: #5f4d5d;
+  cursor: pointer;
+  width: max-content;
+}
+
+.cart-details .remove:hover {
+  color: #ff0303;
+}
+
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus-btn {
+  font-size: 1rem;
+  padding: 4px 10px;
+}
+
+.quantity-value {
+  font-family: Roboto, sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+}
+
+.minus-btn {
+  font-size: 1.3rem;
+  padding: 1px 11px;
+}
+.plus-btn,
+.minus-btn {
+  font-family: Roboto, sans-serif;
+  background-color: #c9adc696;
+  cursor: pointer;
+  color: #fff;
+}
+
+.plus-btn:hover,
+.minus-btn:hover {
+  background-color: #c9adc6c9;
+}
+
+/* CART CHECKOUT */
+.cart-checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.checkout-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-detail .subtotal {
+  color: #5f4d5d;
+  font-size: 24px;
+}
+
+.checkout-btn {
+  font-family: Roboto, sans-serif;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.9rem 4rem;
+  width: 100%;
+  transition: all 0.2s ease;
+  background-color: #ceb3cb;
+  text-align: center;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background-color: #e4c1e0;
+  transition: all 0.2s ease;
+}
+
+hr {
+  border-top: none;
+  border-bottom: 0.5px solid #d6bbd3;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 980px) {
+  /* CART */
+  .cart {
+    width: 100%;
+  }
+
+  /* CART NAV */
+  .cart-nav {
+    padding: 1rem;
+  }
+  .cart-close {
+    width: 12px;
+  }
+
+  /* CART ITEMS */
+  .cart-items {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .cart-details {
+    width: 40%;
+  }
+
+  .cart-details .name {
+    font-size: 16px;
+  }
+
+  .amount {
+    font-size: 12px;
+  }
+
+  .cart-details .remove {
+    font-size: 10px;
+  }
+
+  .plus-btn {
+    font-size: 0.8rem;
+    padding: 3.5px 7.5px;
+  }
+
+  .quantity-value {
+    font-size: 0.8rem;
+  }
+
+  .minus-btn {
+    font-size: 1rem;
+    padding: 2.5px 9px;
+  }
+
+  /* CART CHECKOUT */
+  .cart-checkout {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .checkout-detail .subtotal {
+    font-size: 20px;
+    line-height: 4px;
+  }
+
+  .checkout-btn {
+    font-size: 10px;
+  }
+}
