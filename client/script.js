@@ -1,4 +1,4 @@
-// GO TO TOP BUTTON
+// GO TO TOP BUTTON ------------------------------------------------------------
 var mybutton = document.getElementById("top-btn");
 
 window.onscroll = function () {
@@ -21,7 +21,7 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-// TOGGLE MENU
+// TOGGLE MENU ------------------------------------------------------------
 function toggleMenu() {
   var menu = document.getElementById("menu").classList;
   if (menu.contains("open")) {
@@ -31,27 +31,103 @@ function toggleMenu() {
   }
 }
 
-// CHANGE HERO IMAGE
+// STOP BUBBLING ON CART ----------------------------------------------------
+document.getElementById("cart").addEventListener("click", function (e) {
+  e.stopPropagation();
+});
 
+// CLOSE THE CART WINDOW ----------------------------------------------------
+function closeCart() {
+  document.getElementById("cart-window").style.display = "none";
+}
+
+// OPEN THE CART WINDOW ----------------------------------------------------
+function openCart() {
+  document.getElementById("cart-window").style.display = "block";
+}
+
+// FETCH HERO IMAGE ------------------------------------------------------------
+var banner_index = 0;
+var all_banners;
+window.addEventListener("DOMContentLoaded", async () => {
+  all_banners = await getHeroImages(banner_index);
+});
+
+var hero_banner_div = document.getElementById("hero-banner-card");
+
+// fetch data
+async function getHeroImages(index) {
+  const res = await fetch("http://localhost:9000/api/banner/");
+  const data = await res.json();
+  if (res.ok) {
+    var card = createBannerCard(data[index]);
+    hero_banner_div.innerHTML = card;
+  }
+  return data;
+}
+
+// create dynamic cards
+function createBannerCard(data) {
+  let banner_card = `<div class="banner-image">
+  <img
+    src="./images/${data.image}"
+    alt="hero-image"
+    id="hero-banner"
+  />
+</div>
+<div class="banner-info">
+  <p class="banner-sub">${data.title}</p>
+  <p class="banner-main">${data.body}</p>
+  <a href="${data.button_href_id}"
+    ><p class="banner-sub underline">${data.button}</p></a
+  >
+</div>`;
+  return banner_card;
+}
+
+// change hero banner
 function changeBanner(direction) {
-  const banner = [
-    "./images/hero-banner-1.jpg",
-    "./images/hero-banner-2.jpg",
-    "./images/hero-banner-3.jpg",
-    "./images/hero-banner-4.jpg",
-  ];
-  const currBanner =
-    document.getElementById("hero-banner").attributes.src.value;
-  var index = banner.indexOf(currBanner);
-
   if (direction === "next") {
-    index = (index + 1) % banner.length;
+    banner_index = (banner_index + 1) % all_banners.length;
   } else {
-    index = index - 1;
-    if (index === -1) {
-      index = banner.length - 1;
+    banner_index = banner_index - 1;
+    if (banner_index === -1) {
+      banner_index = all_banners.length - 1;
     }
   }
 
-  document.getElementById("hero-banner").attributes.src.value = banner[index];
+  getHeroImages(banner_index);
+}
+
+// FETCH ALL PRODUCTS ------------------------------------------------------
+window.addEventListener("DOMContentLoaded", () => {
+  getProducts();
+});
+
+var products_div = document.getElementById("products");
+
+// fetch data
+async function getProducts() {
+  const res = await fetch("http://localhost:9000/api/product/");
+  const data = await res.json();
+  if (res.ok) {
+    var card = createProductCard(data);
+    products_div.innerHTML = card;
+  }
+}
+
+// create dynamic cards
+function createProductCard(data) {
+  console.log(data);
+  let products = data
+    .map(
+      (product) =>
+        `<div class="product-card">
+      <img src="./images/${product.main_image}" alt="${product.name}" />
+      <p class="product-name">${product.name}</p>
+      <p class="product-price">${product.price}</p>
+    </div>`
+    )
+    .join("");
+  return products;
 }

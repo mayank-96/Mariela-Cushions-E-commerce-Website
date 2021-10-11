@@ -58,3 +58,18 @@ function changeProductImage(direction) {
     "product-image"
   ).style.backgroundImage = `url(../images/${banner[index]})`;
 }
+
+// ----------------------------------------------------
+// STOP BUBBLING ON CART
+document.getElementById("cart").addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+// CLOSE THE CART WINDOW
+function closeCart() {
+  document.getElementById("cart-window").style.display = "none";
+}
+
+function openCart() {
+  document.getElementById("cart-window").style.display = "block";
+}

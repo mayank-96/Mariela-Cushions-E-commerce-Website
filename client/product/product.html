@@ -13,6 +13,59 @@
       <img src="../images/top.png" alt="Go to top" />
     </button>
 
+    <!-- CART -->
+    <div class="cart-window" id="cart-window" onclick="closeCart();">
+      <div class="cart" id="cart">
+        <!-- CART NAV -->
+        <div class="cart-nav">
+          <p>Your Cart</p>
+          <a class="cart-close" onclick="closeCart();">
+            <img src="../images/close.png" alt="Close Button" />
+          </a>
+        </div>
+        <hr />
+        <!-- CART ITEMS -->
+        <div class="cart-items">
+          <div class="cart-item" id="silver">
+            <div class="cart-image"></div>
+            <div class="cart-details">
+              <p class="name">Silver Cushion</p>
+              <p class="amount">$ 19.99 USD</p>
+              <p class="remove">Remove</p>
+            </div>
+            <div class="quantity">
+              <div class="plus-btn">+</div>
+              <div class="quantity-value">1</div>
+              <div class="minus-btn">-</div>
+            </div>
+          </div>
+          <div class="cart-item" id="pink">
+            <div class="cart-image" id="pink"></div>
+            <div class="cart-details">
+              <p class="name">Pink Cushion</p>
+              <p class="amount">$ 19.99 USD</p>
+              <p class="remove">Remove</p>
+            </div>
+            <div class="quantity">
+              <div class="plus-btn">+</div>
+              <div class="quantity-value">1</div>
+              <div class="minus-btn">-</div>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+        <!-- CART CHECKOUT -->
+        <div class="cart-checkout">
+          <div class="checkout-detail">
+            <p class="subtotal">Subtotal</p>
+            <p class="amount">$ 79.96 USD</p>
+          </div>
+          <div class="checkout-btn">continue to checkout</div>
+        </div>
+      </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav>
       <!-- LOGO -->
@@ -36,9 +89,9 @@
           <div class="line"></div>
         </div>
         <!-- CART -->
-        <p class="icon">
+        <a class="icon" onclick="openCart();">
           <img src="../images/shopping-cart.png" alt="cart" />
-        </p>
+        </a>
       </div>
     </nav>
 
