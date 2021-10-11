@@ -129,6 +129,46 @@ nav {
   background-size: cover;
   width: 90vh;
   height: 80vh;
+  position: relative;
+}
+
+/* ARROWS */
+.banner-nav {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  justify-content: space-between;
+}
+
+.banner-back,
+.banner-next {
+  padding: 10px 12px 10px 12px;
+  cursor: pointer;
+  width: 8%;
+}
+
+.banner-back {
+  /* background-color: #b095ad5e; */
+}
+
+.banner-next {
+  /* background-color: #b897b5; */
+}
+
+.banner-back:hover {
+  background-color: #be9fbb;
+}
+
+.banner-next:hover {
+  background-color: #c29ebf;
+}
+
+.banner-nav img {
+  width: 100%;
 }
 
 /* SHOP */
@@ -169,6 +209,9 @@ nav {
   font-family: Roboto, sans-serif;
   color: #fff;
   font-size: 1rem;
+  line-height: 1.4rem;
+  margin-top: 1rem;
+  letter-spacing: 1.2px;
 }
 
 /* FORM */
@@ -195,7 +238,8 @@ input {
 
 input {
   width: 100%;
-  padding: 15px 20px;
+  padding: 13px 20px;
+  margin-top: 0.5rem;
   border: 1px solid #fff;
   background-color: transparent;
 }
@@ -391,6 +435,46 @@ input:focus {
   .icon {
     margin-left: 1.5rem;
     transform: translateY(2px);
+  }
+
+  /* BANNER */
+
+  .banner {
+    margin-bottom: 4rem;
+  }
+  .card {
+    height: 110vh;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* IMAGE SLIDER */
+  .img-slider {
+    width: 100%;
+  }
+
+  .banner-back,
+  .banner-next {
+    padding: 2px;
+    cursor: pointer;
+    width: 9%;
+    background-color: #b095ad;
+  }
+
+  /* SHOP */
+  .shop {
+    width: 100%;
+    gap: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .details {
+    text-align: center;
   }
 
   /* FEATURES */

@@ -13,6 +13,9 @@
       <img src="../images/top.png" alt="Go to top" />
     </button>
 
+    <!-- CART -->
+    <div class="cart"></div>
+
     <!-- NAVBAR -->
     <nav>
       <!-- LOGO -->
@@ -45,7 +48,24 @@
     <!-- BANNER -->
     <div class="banner">
       <div class="card">
-        <div class="img-slider"></div>
+        <div class="img-slider" id="product-image">
+          <div class="banner-nav">
+            <a
+              href="#banner"
+              class="banner-back"
+              onclick="changeProductImage('back');"
+            >
+              <img src="../images/back.png" alt="back" />
+            </a>
+            <a
+              href="#banner"
+              class="banner-next"
+              onclick="changeProductImage('next');"
+            >
+              <img src="../images/next.png" alt="next" />
+            </a>
+          </div>
+        </div>
         <div class="shop">
           <div class="details">
             <p class="name">Green Cushion</p>

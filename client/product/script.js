@@ -30,3 +30,31 @@ function toggleMenu() {
     menu.replace("close", "open");
   }
 }
+
+// CHANGE PRODUCT IMAGE
+
+function changeProductImage(direction) {
+  const banner = [
+    "GreenCushion.jpg",
+    "GreenCushion-1.jpg",
+    "GreenCushion-2.jpg",
+  ];
+  var img = document.getElementById("product-image");
+  var imgStyle = img.currentStyle || window.getComputedStyle(img, false);
+  var imgLink = imgStyle.backgroundImage.slice(4, -1).replace(/"/g, "");
+  var splitLink = imgLink.split("/");
+  var currBanner = splitLink.at(-1);
+  var index = banner.indexOf(currBanner);
+
+  if (direction === "next") {
+    index = (index + 1) % banner.length;
+  } else {
+    index = index - 1;
+    if (index === -1) {
+      index = banner.length - 1;
+    }
+  }
+  document.getElementById(
+    "product-image"
+  ).style.backgroundImage = `url(../images/${banner[index]})`;
+}
