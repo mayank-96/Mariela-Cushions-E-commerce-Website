@@ -122,12 +122,16 @@ function createProductCard(data) {
   let products = data
     .map(
       (product) =>
-        `<div class="product-card">
-      <img src="./images/${product.main_image}" alt="${product.name}" />
-      <p class="product-name">${product.name}</p>
-      <p class="product-price">${product.price}</p>
-    </div>`
+        `<div class="product-card" id="${product._id}">
+          <a class="product-card-image" href="./product/product.html" >
+            <img src="./images/${product.main_image}" alt="${product.name}" />
+          </a>
+          <p class="product-name">${product.name}</p>
+          <p class="product-price">${product.price}</p>
+        </div>`
     )
     .join("");
   return products;
 }
+
+// HANDLE PRODUCT ---------------------------------------------------------
