@@ -123,7 +123,7 @@ function createProductCard(data) {
     .map(
       (product) =>
         `<div class="product-card" id="${product._id}">
-          <a class="product-card-image" href="./product/product.html" >
+          <a class="product-card-image" href="./product/product.html?id=${product._id}" >
             <img src="./images/${product.main_image}" alt="${product.name}" />
           </a>
           <p class="product-name">${product.name}</p>

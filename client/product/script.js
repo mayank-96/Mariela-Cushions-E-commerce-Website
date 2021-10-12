@@ -34,11 +34,7 @@ function toggleMenu() {
 // CHANGE PRODUCT IMAGE
 
 function changeProductImage(direction) {
-  const banner = [
-    "GreenCushion.jpg",
-    "GreenCushion-1.jpg",
-    "GreenCushion-2.jpg",
-  ];
+  const banner = ["PinkCushion.jpg", "PinkCushion-1.jpg", "PinkCushion-2.jpg"];
   var img = document.getElementById("product-image");
   var imgStyle = img.currentStyle || window.getComputedStyle(img, false);
   var imgLink = imgStyle.backgroundImage.slice(4, -1).replace(/"/g, "");
@@ -73,3 +69,14 @@ function closeCart() {
 function openCart() {
   document.getElementById("cart-window").style.display = "block";
 }
+
+// ----------------------------
+var params = {};
+location.search
+  .slice(1)
+  .split("&")
+  .forEach(function (pair) {
+    pair = pair.split("=");
+    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  });
+console.log(params);
