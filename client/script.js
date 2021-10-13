@@ -31,21 +31,6 @@ function toggleMenu() {
   }
 }
 
-// STOP BUBBLING ON CART ----------------------------------------------------
-document.getElementById("cart").addEventListener("click", function (e) {
-  e.stopPropagation();
-});
-
-// CLOSE THE CART WINDOW ----------------------------------------------------
-function closeCart() {
-  document.getElementById("cart-window").style.display = "none";
-}
-
-// OPEN THE CART WINDOW ----------------------------------------------------
-function openCart() {
-  document.getElementById("cart-window").style.display = "block";
-}
-
 // FETCH HERO IMAGE ------------------------------------------------------------
 var banner_index = 0;
 var all_banners;
@@ -132,4 +117,60 @@ function createProductCard(data) {
     )
     .join("");
   return products;
+}
+
+// CART======================================================================
+// stop cart window bubbling ----------------------------------------------------
+document.getElementById("cart").addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+// close the cart window ----------------------------------------------------
+function closeCart() {
+  document.getElementById("cart-window").style.display = "none";
+}
+
+// open the cart window ----------------------------------------------------
+function openCart() {
+  document.getElementById("cart-window").style.display = "block";
+}
+
+// fetch card items --------------------------------------------------------
+var cart_items;
+window.addEventListener("DOMContentLoaded", async () => {
+  cart_items = await getCartItems();
+});
+
+var cart_item_div = document.getElementById("hero-banner-card");
+
+// fetch data
+async function getHeroImages(index) {
+  const res = await fetch("http://localhost:9000/api/banner/");
+  const data = await res.json();
+  if (res.ok) {
+    var card = createBannerCard(data[index]);
+    hero_banner_div.innerHTML = card;
+  }
+  return data;
+}
+
+// create dynamic cards
+function createCartItemCard(data) {
+  let cart_item_card = `
+  <div class="cart-item" id="silver">
+    <div class="cart-image"></div>
+    <div class="cart-details">
+        <p class="name">Silver Cushion</p>
+        <p class="amount">$ 19.99 USD</p>
+        <p class="remove">Remove</p>
+    </div>
+    <div class="quantity">
+        <div class="plus-btn">+</div>
+        <div class="quantity-value">1</div>
+        <div class="minus-btn">-</div>
+    </div>
+  </div>
+  
+  `;
+  return banner_card;
 }

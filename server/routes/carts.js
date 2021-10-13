@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Cart = require("../models/cart.js");
+const Product = require("../models/product.js");
 
 // ADD CART DETAILS
 router.post("/", async (req, res) => {
@@ -22,7 +23,14 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const cart = await Cart.find();
-    res.json(cart);
+    var cart_products = [];
+    for (var product in cart) {
+      var item = await Product.findById(cart[product].product_id);
+      item["quantity"] = cart[product].quantity;
+      console.log(item["quantity"]);
+      cart_products.push(item);
+    }
+    res.json(cart_products);
   } catch (err) {
     res.status(400).send({ message: err });
   }
