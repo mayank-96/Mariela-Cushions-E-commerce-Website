@@ -155,22 +155,22 @@ async function getHeroImages(index) {
 }
 
 // create dynamic cards
-function createCartItemCard(data) {
-  let cart_item_card = `
-  <div class="cart-item" id="silver">
-    <div class="cart-image"></div>
-    <div class="cart-details">
-        <p class="name">Silver Cushion</p>
-        <p class="amount">$ 19.99 USD</p>
-        <p class="remove">Remove</p>
-    </div>
-    <div class="quantity">
-        <div class="plus-btn">+</div>
-        <div class="quantity-value">1</div>
-        <div class="minus-btn">-</div>
-    </div>
-  </div>
-  
-  `;
-  return banner_card;
-}
+// function createCartItemCard(product,cart) {
+//   let cart_item_card = `
+//   <div class="cart-item" id="${product._id}">
+//     <div class="cart-image"></div>
+//     <div class="cart-details">
+//         <p class="name">${product.name}</p>
+//         <p class="amount">${product.price}</p>
+//         <p class="remove">Remove</p>
+//     </div>
+//     <div class="quantity">
+//         <div class="plus-btn">+</div>
+//         <div class="quantity-value">${}</div>
+//         <div class="minus-btn">-</div>
+//     </div>
+//   </div>
+
+//   `;
+//   return banner_card;
+// }

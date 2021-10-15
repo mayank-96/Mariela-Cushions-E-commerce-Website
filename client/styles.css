@@ -124,12 +124,15 @@ nav {
 .banner-image {
   position: absolute;
   width: 52.2rem;
+  height: 75%;
   left: 14.5%;
   z-index: 8;
 }
 
 .banner-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* INFO CARD */
@@ -858,27 +861,35 @@ hr {
 
   /* BANNER */
   .banner {
-    position: static;
+    position: initial;
     flex-direction: column;
     height: max-content;
   }
 
-  .banner-image {
-    position: static;
+  .hero-banner-card {
+    flex-direction: column;
     width: 100%;
   }
 
-  .banner-info {
-    position: static;
+  .banner-image {
+    position: initial;
     width: 100%;
-    padding-left: 3rem;
-    padding-right: 5rem;
+    height: 500px;
+  }
+
+  .banner-info {
+    position: initial;
+    width: 100%;
+    height: 300px;
+    padding-left: 2rem;
+    padding-right: 1rem;
     padding-block: 4rem;
     gap: 1rem;
   }
 
   .banner-main {
     font-size: 2rem;
+    width: 100%;
   }
 
   .banner-sub {
@@ -889,8 +900,7 @@ hr {
   }
 
   .banner-nav {
-    display: none;
-    visibility: hidden;
+    position: initial;
   }
 
   /* INTRO */
