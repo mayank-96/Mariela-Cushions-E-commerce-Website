@@ -1,4 +1,15 @@
-// GO TO TOP BUTTON ------------------------------------------------------------
+// LOADER =========================================================
+document.onreadystatechange = function () {
+  if (document.readyState !== "complete") {
+    document.querySelector("body").style.visibility = "hidden";
+    document.querySelector("#loader").style.visibility = "visible";
+  } else {
+    document.querySelector("#loader").style.display = "none";
+    document.querySelector("body").style.visibility = "visible";
+  }
+};
+
+// GO TO TOP BUTTON =========================================================
 var mybutton = document.getElementById("top-btn");
 
 window.onscroll = function () {
@@ -21,7 +32,7 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-// TOGGLE MENU ------------------------------------------------------------
+// TOGGLE MENU =========================================================
 function toggleMenu() {
   var menu = document.getElementById("menu").classList;
   if (menu.contains("open")) {

@@ -1,5 +1,6 @@
-// FETCH PRODUCT HERO IMAGE ===========================================================
-// get product id
+// FETCH PRODUCT HERO IMAGE =========================================================
+
+// get product id from the url
 var params = {};
 let present_in_cart = false;
 location.search
@@ -27,7 +28,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 // fetch data
 async function getHeroData(id) {
-  const res = await fetch(`http://localhost:9000/api/product/${id}`);
+  const res = await fetch(
+    `https://cushion-ecommerce.herokuapp.com/api/product/${id}`
+  );
   const data = await res.json();
   if (res.ok) {
     var card = await createBannerCard(data);
@@ -38,7 +41,7 @@ async function getHeroData(id) {
 
 // create dynamic cards
 async function createBannerCard(data) {
-  const res = await fetch(`http://localhost:9000/api/cart/`);
+  const res = await fetch(`https://cushion-ecommerce.herokuapp.com/api/cart/`);
   const cart_data = await res.json();
   for (var item in cart_data) {
     if (params.id === cart_data[item]._id) {
@@ -96,7 +99,6 @@ async function createBannerCard(data) {
 }
 
 // change product image
-
 function changeProductImage(direction) {
   const banner = [product_data.main_image, ...product_data.images];
   var img = document.getElementById("product-image");
@@ -119,7 +121,7 @@ function changeProductImage(direction) {
   ).style.backgroundImage = `url(./images/${banner[index]})`;
 }
 
-// FETCH SIMILAR PRODUCTS ----------------------------------------------------
+// FETCH SIMILAR PRODUCTS =========================================================
 window.addEventListener("DOMContentLoaded", () => {
   getSimilarProducts(params.id);
 });
@@ -128,7 +130,9 @@ var products_div = document.getElementById("similar-products");
 
 // fetch data
 async function getSimilarProducts(id) {
-  const res = await fetch(`http://localhost:9000/api/product/similar/${id}`);
+  const res = await fetch(
+    `https://cushion-ecommerce.herokuapp.com/api/product/similar/${id}`
+  );
   const data = await res.json();
   if (res.ok) {
     var card = createProductCard(data);
@@ -153,19 +157,20 @@ function createProductCard(data) {
   return products;
 }
 
-// CART======================================================================
-// stop cart window bubbling ----------------------------------------------------
+// CART =========================================================
+
+// stop cart window bubbling
 document.getElementById("cart").addEventListener("click", function (e) {
   e.stopPropagation();
 });
 
-// close the cart window ----------------------------------------------------
+// close the cart window
 function closeCart() {
   document.getElementById("cart-window").style.display = "none";
   document.getElementById("checkout-disabled").style.display = "none";
 }
 
-// open the cart window ----------------------------------------------------
+// open the cart window
 async function openCart() {
   document.getElementById("cart-window").style.display = "block";
   calculateSubtotal();
@@ -173,7 +178,9 @@ async function openCart() {
 
 // calculate subtotal
 async function calculateSubtotal() {
-  const res = await fetch("http://localhost:9000/api/cart/subtotal");
+  const res = await fetch(
+    "https://cushion-ecommerce.herokuapp.com/api/cart/subtotal"
+  );
   const data = await res.json();
 
   if (res.ok) {
@@ -181,7 +188,7 @@ async function calculateSubtotal() {
   }
 }
 
-// fetch card items --------------------------------------------------------
+// fetch card items
 var cart_items;
 window.addEventListener("DOMContentLoaded", async () => {
   cart_items = await getCartItems();
@@ -191,8 +198,12 @@ var cart_item_div = document.getElementById("cart-items");
 
 // fetch data
 async function getCartItems() {
-  const res_pro = await fetch("http://localhost:9000/api/cart/");
-  const res_cart = await fetch("http://localhost:9000/api/cart/cart_items");
+  const res_pro = await fetch(
+    "https://cushion-ecommerce.herokuapp.com/api/cart/"
+  );
+  const res_cart = await fetch(
+    "https://cushion-ecommerce.herokuapp.com/api/cart/cart_items"
+  );
 
   const data_product = await res_pro.json();
   const data_cart = await res_cart.json();
@@ -235,12 +246,15 @@ function createCartCard(product, cart) {
 
 // delete cart item
 async function removeItem(cart_item_id, product_id) {
-  let item = await fetch(`http://localhost:9000/api/cart/${cart_item_id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
+  let item = await fetch(
+    `https://cushion-ecommerce.herokuapp.com/api/cart/${cart_item_id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
   if (params.id === product_id) {
     document.getElementById("checkout-btn").innerHTML = "Add to cart";
     document.getElementById(
@@ -257,7 +271,7 @@ async function addItem(id) {
     product_id: id,
     quantity: q,
   };
-  let item = await fetch(`http://localhost:9000/api/cart/`, {
+  let item = await fetch(`https://cushion-ecommerce.herokuapp.com/api/cart/`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -284,19 +298,22 @@ async function changeQuantity(direction, id) {
   var data = {
     quantity: quantity,
   };
-  let item = await fetch(`http://localhost:9000/api/cart/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  let item = await fetch(
+    `https://cushion-ecommerce.herokuapp.com/api/cart/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   quantity_value.innerHTML = quantity;
   calculateSubtotal();
 }
 
-// DISABLED BTN
+// checkout disabled btn
 function checkoutBtn() {
   document.getElementById("checkout-disabled").style.display = "block";
 }

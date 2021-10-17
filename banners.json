@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "6162e5c7b2164190a88e1871"
+  },
+  "image": "hero-banner-1.jpg",
+  "title": "New",
+  "body": "Spring Cushion Collection 2021",
+  "button": "Buy now",
+  "button_href_id": "#product-banner",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6162e64cb2164190a88e1873"
+  },
+  "image": "hero-banner-2.jpg",
+  "title": "About me",
+  "body": "I'm a trendy Cushion Designer",
+  "button": "Learn more",
+  "button_href_id": "#about",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6162e840b2164190a88e1875"
+  },
+  "image": "hero-banner-3.jpg",
+  "title": "Exclusive",
+  "body": "Eco Cushion Collection 2021",
+  "button": "Buy now",
+  "button_href_id": "./product.html?id=61630727678f902709b5e1ca",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6162e858b2164190a88e1877"
+  },
+  "image": "hero-banner-4.jpg",
+  "title": "Exclusive",
+  "body": "Modern Cushion Collection 2021",
+  "button": "Buy now",
+  "button_href_id": "./product.html?id=616306fd678f902709b5e1c6",
+  "__v": 0
+}]

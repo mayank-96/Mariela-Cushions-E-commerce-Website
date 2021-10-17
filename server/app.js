@@ -5,7 +5,7 @@ app.use(express.json());
 const port = process.env.PORT || 9000;
 
 const mongoose = require("mongoose");
-const url = "mongodb://localhost:27017/MarielaCushions";
+const url = "MONGODB_URL";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
   console.log("connected to db!")
 );
@@ -22,6 +22,6 @@ app.use("/api/cart", cartRouter);
 const productRouter = require("./routes/products");
 app.use("/api/product", productRouter);
 
-app.listen(9000, () => {
+app.listen(port, () => {
   console.log("Server started");
 });

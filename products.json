@@ -1,0 +1,79 @@
+[{
+  "_id": {
+    "$oid": "6162eb13b2164190a88e187b"
+  },
+  "main_image": "PlatedCushion.jpg",
+  "name": "Plated Cushion",
+  "price": 52,
+  "description": "Indulge your modern aesthetics with luxe texture and piped details with our silver grey velvet cushion cover. Team with our curated collection of black and white cushions for a look that’s refined and unmatched.",
+  "images": [
+    "PlatedCushion-1.jpg",
+    "PlatedCushion-2.jpg"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6162ed33b2164190a88e187d"
+  },
+  "main_image": "SilverCushion.jpg",
+  "name": "Silver Cushion",
+  "price": 69,
+  "description": "This grey faux fur cushion cover will bring some bling to your look or create a sense of opulence. Soft, fluffy and perfect for contemporary styles especially Scandi styling.",
+  "images": [
+    "SilverCushion-1.jpg",
+    "SilverCushion-2.jpg"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "616306e2678f902709b5e1c4"
+  },
+  "main_image": "DeepBlueCushion.jpg",
+  "name": "Deep Blue Cushion",
+  "price": 39,
+  "description": "Mid to dark shades of blue feel trendy, but sophisticated enough to lend a timeless feel. If you’re looking to show off vivid colours, this Albany royal blue cushion cover is the perfect piece for a bold focal point.",
+  "images": [
+    "DeepBlueCushion-1.jpg",
+    "DeepBlueCushion-2.jpg"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "616306fd678f902709b5e1c6"
+  },
+  "main_image": "PinkCushion.jpg",
+  "name": "Pink Cushion",
+  "price": 69,
+  "description": "This lovely light pink fluffy cushion cover is perfect for lush styling of your home. A perfect pairing with chocolate and navy tones, the soft look and feel is a luxurious addition to any contemporary decor.",
+  "images": [
+    "PinkCushion-1.jpg",
+    "PinkCushion-2.jpg"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61630710678f902709b5e1c8"
+  },
+  "main_image": "BlackCushion.jpg",
+  "name": "Black Cushion",
+  "price": 44,
+  "description": "Faux fur adds a cosy touch that’s perfect for the winter, but can lend a daring vibe suitable for the warmer season. In daring black, this fur cushion cover will add much needed elegance all-year round.",
+  "images": [
+    "BlackCushion-1.jpg",
+    "BlackCushion-2.jpg"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61630727678f902709b5e1ca"
+  },
+  "main_image": "GreenCushion.jpg",
+  "name": "Green Cushion",
+  "price": 35,
+  "description": "Soft, natural colours that are easy to decorate with often lend a sense of calm to a space. In an ultimate destressing colour, this Albany sage green rectangular cushion is an ideal piece for a soothing and restful vibe. ",
+  "images": [
+    "GreenCushion-1.jpg",
+    "GreenCushion-2.jpg"
+  ],
+  "__v": 0
+}]
