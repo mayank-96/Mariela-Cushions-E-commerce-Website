@@ -19,18 +19,42 @@ router.post("/", async (req, res) => {
   }
 });
 
-// FETCH ALL CART DETAILS
+// FETCH ALL PRODUCT CART DETAILS
 router.get("/", async (req, res) => {
   try {
     const cart = await Cart.find();
     var cart_products = [];
     for (var product in cart) {
       var item = await Product.findById(cart[product].product_id);
-      item["quantity"] = cart[product].quantity;
-      console.log(item["quantity"]);
       cart_products.push(item);
     }
     res.json(cart_products);
+  } catch (err) {
+    res.status(400).send({ message: err });
+  }
+});
+
+// FETCH CART SUBTOTAL
+router.get("/subtotal", async (req, res) => {
+  try {
+    const cart = await Cart.find();
+    let subtotal = { subtotal: 0 };
+    for (var product in cart) {
+      var item = await Product.findById(cart[product].product_id);
+      subtotal["subtotal"] += cart[product].quantity * item.price;
+    }
+
+    res.json(subtotal);
+  } catch (err) {
+    res.status(400).send({ message: err });
+  }
+});
+
+// FETCH ALL CART DETAILS
+router.get("/cart_items", async (req, res) => {
+  try {
+    const cart = await Cart.find();
+    res.json(cart);
   } catch (err) {
     res.status(400).send({ message: err });
   }
@@ -51,16 +75,7 @@ router.get("/filter/:filters", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     let cart = await Cart.findById(req.params.id);
-    var keys = Object.keys(req.body);
-
-    function update(i) {
-      if (req.body[i] !== "") {
-        course[i] = req.body[i];
-      }
-    }
-
-    keys.forEach(update);
-
+    cart.quantity = req.body.quantity;
     const cartObj = await cart.save();
     res.json(cartObj);
   } catch (err) {

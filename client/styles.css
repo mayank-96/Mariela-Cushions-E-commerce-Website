@@ -1171,19 +1171,14 @@ hr {
 }
 
 .cart-image {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 11vh;
-  height: 11vh;
-  position: relative;
+  width: 5rem;
+  height: 5rem;
 }
 
-#silver .cart-image {
-  background-image: url("./images/SilverCushion.jpg");
-}
-
-#pink .cart-image {
-  background-image: url("./images/PinkCushion.jpg");
+.cart-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cart-details {

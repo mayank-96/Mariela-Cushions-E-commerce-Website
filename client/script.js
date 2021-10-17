@@ -103,7 +103,6 @@ async function getProducts() {
 
 // create dynamic cards
 function createProductCard(data) {
-  console.log(data);
   let products = data
     .map(
       (product) =>
@@ -112,7 +111,7 @@ function createProductCard(data) {
             <img src="./images/${product.main_image}" alt="${product.name}" />
           </a>
           <p class="product-name">${product.name}</p>
-          <p class="product-price">${product.price}</p>
+          <p class="product-price">$ ${product.price} USD</p>
         </div>`
     )
     .join("");
@@ -133,6 +132,17 @@ function closeCart() {
 // open the cart window ----------------------------------------------------
 function openCart() {
   document.getElementById("cart-window").style.display = "block";
+  calculateSubtotal();
+}
+
+// calculate subtotal
+async function calculateSubtotal() {
+  const res = await fetch("http://localhost:9000/api/cart/subtotal");
+  const data = await res.json();
+
+  if (res.ok) {
+    document.getElementById("subtotal").innerHTML = `$ ${data.subtotal} USD`;
+  }
 }
 
 // fetch card items --------------------------------------------------------
@@ -141,36 +151,81 @@ window.addEventListener("DOMContentLoaded", async () => {
   cart_items = await getCartItems();
 });
 
-var cart_item_div = document.getElementById("hero-banner-card");
+var cart_item_div = document.getElementById("cart-items");
 
 // fetch data
-async function getHeroImages(index) {
-  const res = await fetch("http://localhost:9000/api/banner/");
-  const data = await res.json();
-  if (res.ok) {
-    var card = createBannerCard(data[index]);
-    hero_banner_div.innerHTML = card;
+async function getCartItems() {
+  const res_pro = await fetch("http://localhost:9000/api/cart/");
+  const res_cart = await fetch("http://localhost:9000/api/cart/cart_items");
+
+  const data_product = await res_pro.json();
+  const data_cart = await res_cart.json();
+
+  if (res_pro.ok && res_cart.ok) {
+    var card = createCartCard(data_product, data_cart);
+    cart_item_div.innerHTML = card;
   }
-  return data;
+  return data_product;
 }
 
 // create dynamic cards
-// function createCartItemCard(product,cart) {
-//   let cart_item_card = `
-//   <div class="cart-item" id="${product._id}">
-//     <div class="cart-image"></div>
-//     <div class="cart-details">
-//         <p class="name">${product.name}</p>
-//         <p class="amount">${product.price}</p>
-//         <p class="remove">Remove</p>
-//     </div>
-//     <div class="quantity">
-//         <div class="plus-btn">+</div>
-//         <div class="quantity-value">${}</div>
-//         <div class="minus-btn">-</div>
-//     </div>
-//   </div>
+function createCartCard(product, cart) {
+  let cart_items = "";
+  for (var i = 0; i < product.length; i++) {
+    var cart_id = cart[i]._id;
+    cart_items += `
+      <div class="cart-item" id="${product[i]._id}">
+        <div class="cart-image">
+          <img src="./images/${product[i].main_image}" alt="${product[i].name}" />
+        </div>
+        <div class="cart-details">
+          <p class="name">${product[i].name}</p>
+          <p class="amount">$ ${product[i].price} USD</p>
+          <p class="remove" onclick="removeItem('${cart_id}');">Remove</p>
+        </div>
+        <div class="quantity">
+          <div class="minus-btn" onclick="changeQuantity('dec','${cart_id}');">-</div>
+          <div class="quantity-value" id="quantity-value">${cart[i].quantity}</div>
+          <div class="plus-btn" onclick="changeQuantity('inc','${cart_id}');">+</div>
+        </div>
+      </div>
+      `;
+  }
+  return cart_items;
+}
 
-//   `;
-//   return banner_card;
-// }
+// delete cart item
+async function removeItem(id) {
+  let item = await fetch(`http://localhost:9000/api/cart/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  getCartItems();
+  calculateSubtotal();
+}
+
+// increment-decrement quantiy btn
+async function changeQuantity(direction, id) {
+  var quantity_value = document.getElementById("quantity-value");
+  var quantity = parseInt(quantity_value.innerHTML);
+  if (direction === "inc" && quantity >= 1) {
+    quantity += 1;
+  } else if (direction === "dec" && quantity >= 2) {
+    quantity -= 1;
+  }
+  var data = {
+    quantity: quantity,
+  };
+  let item = await fetch(`http://localhost:9000/api/cart/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  quantity_value.innerHTML = quantity;
+  calculateSubtotal();
+}

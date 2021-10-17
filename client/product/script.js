@@ -31,23 +31,10 @@ function toggleMenu() {
   }
 }
 
-// STOP BUBBLING ON CART =======================================================
-document.getElementById("cart").addEventListener("click", function (e) {
-  e.stopPropagation();
-});
-
-// CLOSE THE CART WINDOW =======================================================
-function closeCart() {
-  document.getElementById("cart-window").style.display = "none";
-}
-
-function openCart() {
-  document.getElementById("cart-window").style.display = "block";
-}
-
 // FETCH PRODUCT HERO IMAGE ===========================================================
 // get product id
 var params = {};
+let present_in_cart = false;
 location.search
   .slice(1)
   .split("&")
@@ -63,22 +50,35 @@ window.addEventListener("DOMContentLoaded", async () => {
   document.getElementById(
     "product-image"
   ).style.backgroundImage = `url(../images/${product_data.main_image})`;
+
+  if (present_in_cart) {
+    document.getElementById("checkout-btn").innerHTML = "Go to cart 🡪";
+    document.getElementById("checkout-btn").attributes.onclick.value =
+      "openCart()";
+  }
 });
 
 // fetch data
 async function getHeroData(id) {
   const res = await fetch(`http://localhost:9000/api/product/${id}`);
   const data = await res.json();
-  console.log(data);
   if (res.ok) {
-    var card = createBannerCard(data);
+    var card = await createBannerCard(data);
     hero_banner_div.innerHTML = card;
   }
   return data;
 }
 
 // create dynamic cards
-function createBannerCard(data) {
+async function createBannerCard(data) {
+  const res = await fetch(`http://localhost:9000/api/cart/`);
+  const cart_data = await res.json();
+  for (var item in cart_data) {
+    if (params.id === cart_data[item]._id) {
+      present_in_cart = true;
+    }
+  }
+
   let banner_card = `
     <div class="card">
     <div class="img-slider" id="product-image">
@@ -102,7 +102,7 @@ function createBannerCard(data) {
     <div class="shop">
       <div class="details">
         <p class="name">${data.name}</p>
-        <p class="price">${data.price}</p>
+        <p class="price">$ ${data.price} USD</p>
         <p class="description">
           ${data.description}
         </p>
@@ -115,8 +115,11 @@ function createBannerCard(data) {
             type="number"
             name="quantity"
             placeholder="1"
+            id="quantity"
+            value="1"
+            min="1"
           />
-          <div class="btn">Add to cart</div>
+          <div class="btn" id="checkout-btn" onclick="addItem('${data._id}');">Add to cart</div>
         </form>
       </div>
     </div>
@@ -147,4 +150,145 @@ function changeProductImage(direction) {
   document.getElementById(
     "product-image"
   ).style.backgroundImage = `url(../images/${banner[index]})`;
+}
+
+// CART======================================================================
+// stop cart window bubbling ----------------------------------------------------
+document.getElementById("cart").addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+// close the cart window ----------------------------------------------------
+function closeCart() {
+  document.getElementById("cart-window").style.display = "none";
+}
+
+// open the cart window ----------------------------------------------------
+async function openCart() {
+  document.getElementById("cart-window").style.display = "block";
+  calculateSubtotal();
+}
+
+// calculate subtotal
+async function calculateSubtotal() {
+  const res = await fetch("http://localhost:9000/api/cart/subtotal");
+  const data = await res.json();
+
+  if (res.ok) {
+    document.getElementById("subtotal").innerHTML = `$ ${data.subtotal} USD`;
+  }
+}
+
+// fetch card items --------------------------------------------------------
+var cart_items;
+window.addEventListener("DOMContentLoaded", async () => {
+  cart_items = await getCartItems();
+});
+
+var cart_item_div = document.getElementById("cart-items");
+
+// fetch data
+async function getCartItems() {
+  const res_pro = await fetch("http://localhost:9000/api/cart/");
+  const res_cart = await fetch("http://localhost:9000/api/cart/cart_items");
+
+  const data_product = await res_pro.json();
+  const data_cart = await res_cart.json();
+
+  if (res_pro.ok && res_cart.ok) {
+    var card = createCartCard(data_product, data_cart);
+    cart_item_div.innerHTML = card;
+    calculateSubtotal();
+  }
+  return data_product;
+}
+
+// create dynamic cards
+function createCartCard(product, cart) {
+  let cart_items = "";
+  for (var i = 0; i < product.length; i++) {
+    var cart_id = cart[i]._id;
+    var product_id = product[i]._id;
+    cart_items += `
+      <div class="cart-item" id="${product[i]._id}">
+        <div class="cart-image">
+          <img src="../images/${product[i].main_image}" alt="${product[i].name}" />
+        </div>
+        <div class="cart-details">
+          <p class="name">${product[i].name}</p>
+          <p class="amount">$ ${product[i].price} USD</p>
+          <p class="remove" onclick="removeItem('${cart_id}','${product_id}');">Remove</p>
+        </div>
+        <div class="quantity">
+          <div class="minus-btn" onclick="changeQuantity('dec','${cart_id}');">-</div> 
+          <div class="quantity-value" id="quantity-value">${cart[i].quantity}</div>
+          <div class="plus-btn" onclick="changeQuantity('inc','${cart_id}');">+</div>
+        </div>
+      </div>
+      `;
+  }
+  return cart_items;
+}
+
+// delete cart item
+async function removeItem(cart_item_id, product_id) {
+  let item = await fetch(`http://localhost:9000/api/cart/${cart_item_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  if (params.id === product_id) {
+    document.getElementById("checkout-btn").innerHTML = "Add to cart";
+    document.getElementById(
+      "checkout-btn"
+    ).attributes.onclick.value = `addItem('${product_id}');`;
+  }
+  present_in_cart = false;
+  getCartItems();
+}
+
+async function addItem(id) {
+  var q = document.getElementById("quantity").value;
+  const data = {
+    product_id: id,
+    quantity: q,
+  };
+  let item = await fetch(`http://localhost:9000/api/cart/`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  document.getElementById("checkout-btn").innerHTML = "Go to cart 🡪";
+  document.getElementById("checkout-btn").attributes.onclick.value =
+    "openCart()";
+  getCartItems();
+  openCart();
+}
+
+// increment-decrement quantiy btn
+async function changeQuantity(direction, id) {
+  var quantity_value = document.getElementById("quantity-value");
+  var quantity = parseInt(quantity_value.innerHTML);
+  if (direction === "inc" && quantity >= 1) {
+    quantity += 1;
+  } else if (direction === "dec" && quantity >= 2) {
+    quantity -= 1;
+  }
+  var data = {
+    quantity: quantity,
+  };
+  let item = await fetch(`http://localhost:9000/api/cart/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  quantity_value.innerHTML = quantity;
+  calculateSubtotal();
 }
