@@ -1,36 +1,3 @@
-// GO TO TOP BUTTON ------------------------------------------------------------
-var mybutton = document.getElementById("top-btn");
-
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (
-    document.body.offsetWidth > 980 &&
-    (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
-  ) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-
-// TOGGLE MENU ------------------------------------------------------------
-function toggleMenu() {
-  var menu = document.getElementById("menu").classList;
-  if (menu.contains("open")) {
-    menu.replace("open", "close");
-  } else {
-    menu.replace("close", "open");
-  }
-}
-
 // FETCH HERO IMAGE ------------------------------------------------------------
 var banner_index = 0;
 var all_banners;
@@ -107,7 +74,7 @@ function createProductCard(data) {
     .map(
       (product) =>
         `<div class="product-card" id="${product._id}">
-          <a class="product-card-image" href="./product/product.html?id=${product._id}" >
+          <a class="product-card-image" href="./product.html?id=${product._id}" >
             <img src="./images/${product.main_image}" alt="${product.name}" />
           </a>
           <p class="product-name">${product.name}</p>
@@ -130,7 +97,7 @@ function closeCart() {
 }
 
 // open the cart window ----------------------------------------------------
-function openCart() {
+async function openCart() {
   document.getElementById("cart-window").style.display = "block";
   calculateSubtotal();
 }
@@ -164,6 +131,7 @@ async function getCartItems() {
   if (res_pro.ok && res_cart.ok) {
     var card = createCartCard(data_product, data_cart);
     cart_item_div.innerHTML = card;
+    calculateSubtotal();
   }
   return data_product;
 }
@@ -173,42 +141,43 @@ function createCartCard(product, cart) {
   let cart_items = "";
   for (var i = 0; i < product.length; i++) {
     var cart_id = cart[i]._id;
+    var product_id = product[i]._id;
     cart_items += `
-      <div class="cart-item" id="${product[i]._id}">
-        <div class="cart-image">
-          <img src="./images/${product[i].main_image}" alt="${product[i].name}" />
+        <div class="cart-item" id="${product[i]._id}">
+          <div class="cart-image">
+            <img src="./images/${product[i].main_image}" alt="${product[i].name}" />
+          </div>
+          <div class="cart-details">
+            <p class="name">${product[i].name}</p>
+            <p class="amount">$ ${product[i].price} USD</p>
+            <p class="remove" onclick="removeItem('${cart_id}','${product_id}');">Remove</p>
+          </div>
+          <div class="quantity">
+            <div class="minus-btn" onclick="changeQuantity('dec','${cart_id}');">-</div> 
+            <div class="quantity-value" id="${cart_id}-quantity">${cart[i].quantity}</div>
+            <div class="plus-btn" onclick="changeQuantity('inc','${cart_id}');">+</div>
+          </div>
         </div>
-        <div class="cart-details">
-          <p class="name">${product[i].name}</p>
-          <p class="amount">$ ${product[i].price} USD</p>
-          <p class="remove" onclick="removeItem('${cart_id}');">Remove</p>
-        </div>
-        <div class="quantity">
-          <div class="minus-btn" onclick="changeQuantity('dec','${cart_id}');">-</div>
-          <div class="quantity-value" id="quantity-value">${cart[i].quantity}</div>
-          <div class="plus-btn" onclick="changeQuantity('inc','${cart_id}');">+</div>
-        </div>
-      </div>
-      `;
+        `;
   }
+  console.log(cart_items);
   return cart_items;
 }
 
 // delete cart item
-async function removeItem(id) {
-  let item = await fetch(`http://localhost:9000/api/cart/${id}`, {
+async function removeItem(cart_item_id, product_id) {
+  let item = await fetch(`http://localhost:9000/api/cart/${cart_item_id}`, {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
     },
   });
   getCartItems();
-  calculateSubtotal();
 }
 
 // increment-decrement quantiy btn
 async function changeQuantity(direction, id) {
-  var quantity_value = document.getElementById("quantity-value");
+  var quantity_value = document.getElementById(`${id}-quantity`);
   var quantity = parseInt(quantity_value.innerHTML);
   if (direction === "inc" && quantity >= 1) {
     quantity += 1;

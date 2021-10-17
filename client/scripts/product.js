@@ -1,36 +1,3 @@
-// GO TO TOP BUTTON ==============================================================
-var mybutton = document.getElementById("top-btn");
-
-window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
-  if (
-    document.body.offsetWidth > 980 &&
-    (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
-  ) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-
-// TOGGLE MENU =====================================================================
-function toggleMenu() {
-  var menu = document.getElementById("menu").classList;
-  if (menu.contains("open")) {
-    menu.replace("open", "close");
-  } else {
-    menu.replace("close", "open");
-  }
-}
-
 // FETCH PRODUCT HERO IMAGE ===========================================================
 // get product id
 var params = {};
@@ -49,7 +16,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   product_data = await getHeroData(params.id);
   document.getElementById(
     "product-image"
-  ).style.backgroundImage = `url(../images/${product_data.main_image})`;
+  ).style.backgroundImage = `url(./images/${product_data.main_image})`;
 
   if (present_in_cart) {
     document.getElementById("checkout-btn").innerHTML = "Go to cart 🡪";
@@ -88,14 +55,14 @@ async function createBannerCard(data) {
           class="banner-back"
           onclick="changeProductImage('back');"
         >
-          <img src="../images/back.png" alt="back" />
+          <img src="./images/back.png" alt="back" />
         </a>
         <a
           href="#banner"
           class="banner-next"
           onclick="changeProductImage('next');"
         >
-          <img src="../images/next.png" alt="next" />
+          <img src="./images/next.png" alt="next" />
         </a>
       </div>
     </div>
@@ -149,7 +116,7 @@ function changeProductImage(direction) {
   }
   document.getElementById(
     "product-image"
-  ).style.backgroundImage = `url(../images/${banner[index]})`;
+  ).style.backgroundImage = `url(./images/${banner[index]})`;
 }
 
 // CART======================================================================
@@ -210,23 +177,24 @@ function createCartCard(product, cart) {
     var cart_id = cart[i]._id;
     var product_id = product[i]._id;
     cart_items += `
-      <div class="cart-item" id="${product[i]._id}">
-        <div class="cart-image">
-          <img src="../images/${product[i].main_image}" alt="${product[i].name}" />
+        <div class="cart-item" id="${product[i]._id}">
+          <div class="cart-image">
+            <img src="./images/${product[i].main_image}" alt="${product[i].name}" />
+          </div>
+          <div class="cart-details">
+            <p class="name">${product[i].name}</p>
+            <p class="amount">$ ${product[i].price} USD</p>
+            <p class="remove" onclick="removeItem('${cart_id}','${product_id}');">Remove</p>
+          </div>
+          <div class="quantity">
+            <div class="minus-btn" onclick="changeQuantity('dec','${cart_id}');">-</div> 
+            <div class="quantity-value" id="${cart_id}-quantity">${cart[i].quantity}</div>
+            <div class="plus-btn" onclick="changeQuantity('inc','${cart_id}');">+</div>
+          </div>
         </div>
-        <div class="cart-details">
-          <p class="name">${product[i].name}</p>
-          <p class="amount">$ ${product[i].price} USD</p>
-          <p class="remove" onclick="removeItem('${cart_id}','${product_id}');">Remove</p>
-        </div>
-        <div class="quantity">
-          <div class="minus-btn" onclick="changeQuantity('dec','${cart_id}');">-</div> 
-          <div class="quantity-value" id="quantity-value">${cart[i].quantity}</div>
-          <div class="plus-btn" onclick="changeQuantity('inc','${cart_id}');">+</div>
-        </div>
-      </div>
-      `;
+        `;
   }
+  console.log(cart_items);
   return cart_items;
 }
 
@@ -271,7 +239,7 @@ async function addItem(id) {
 
 // increment-decrement quantiy btn
 async function changeQuantity(direction, id) {
-  var quantity_value = document.getElementById("quantity-value");
+  var quantity_value = document.getElementById(`${id}-quantity`);
   var quantity = parseInt(quantity_value.innerHTML);
   if (direction === "inc" && quantity >= 1) {
     quantity += 1;
