@@ -30,6 +30,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+// FETCH SIMILAR PRODUCTS
+router.get("/similar/:id", async (req, res) => {
+  try {
+    const product = await Product.find();
+    const products = product.filter(
+      (data) => req.params.id !== data._id.toString()
+    );
+    // Shuffle array
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    res.json(shuffled.slice(0, 3));
+  } catch (err) {
+    res.status(400).send({ message: err });
+  }
+});
+
 // FETCH PRODUCT BY ID
 router.get("/:id", async (req, res) => {
   try {

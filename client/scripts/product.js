@@ -119,6 +119,40 @@ function changeProductImage(direction) {
   ).style.backgroundImage = `url(./images/${banner[index]})`;
 }
 
+// FETCH SIMILAR PRODUCTS ----------------------------------------------------
+window.addEventListener("DOMContentLoaded", () => {
+  getSimilarProducts(params.id);
+});
+
+var products_div = document.getElementById("similar-products");
+
+// fetch data
+async function getSimilarProducts(id) {
+  const res = await fetch(`http://localhost:9000/api/product/similar/${id}`);
+  const data = await res.json();
+  if (res.ok) {
+    var card = createProductCard(data);
+    products_div.innerHTML = card;
+  }
+}
+
+// create dynamic cards
+function createProductCard(data) {
+  let products = data
+    .map(
+      (product) =>
+        `<div class="product-card" id="${product._id}">
+          <a class="product-card-image" href="./product.html?id=${product._id}" >
+            <img src="./images/${product.main_image}" alt="${product.name}" />
+          </a>
+          <p class="product-name">${product.name}</p>
+          <p class="product-price">$ ${product.price} USD</p>
+        </div>`
+    )
+    .join("");
+  return products;
+}
+
 // CART======================================================================
 // stop cart window bubbling ----------------------------------------------------
 document.getElementById("cart").addEventListener("click", function (e) {

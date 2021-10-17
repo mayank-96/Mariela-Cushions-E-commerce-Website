@@ -43,14 +43,6 @@
   width: 8%;
 }
 
-.banner-back {
-  /* background-color: #b095ad5e; */
-}
-
-.banner-next {
-  /* background-color: #b897b5; */
-}
-
 .banner-back:hover {
   background-color: #be9fbb;
 }
@@ -163,25 +155,106 @@ input:focus {
   color: #ceb3cb;
   transition: all 0.2s ease;
 }
+
+/* SIMILAR PRODUCTS */
+.similar {
+  background-color: #f3f3f3;
+  padding: 6rem 14rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.similar-title {
+  font-size: 24px;
+  line-height: 30px;
+  color: #5f4d5d;
+  font-weight: 600;
+}
+
+.back-to-product {
+  margin-top: 1rem;
+  font-family: Roboto, sans-serif;
+  color: #b99bb6;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: right;
+}
+.products {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: max-content;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.product-card-image {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.product-card-image img {
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-card-image img:hover {
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
+  transition: all 0.3s ease;
+}
+
+.product-name {
+  color: #5f4d5d;
+  font-weight: 500;
+  text-align: center;
+  font-size: 24px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.product-price {
+  font-family: Roboto, sans-serif;
+  color: #b0b0b0;
+  font-size: 16px;
+  line-height: 17.5px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+}
+
 /* RESPONSIVE */
 @media only screen and (max-width: 980px) {
   /* BANNER */
   .banner {
-    margin-bottom: 4rem;
+    height: max-content;
   }
   .card {
-    height: 110vh;
+    height: max-content;
     width: 100%;
     flex-direction: column;
-    margin-top: 5rem;
-    padding-top: 3rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 2rem;
+    padding-top: 4rem;
   }
 
   /* IMAGE SLIDER */
   .img-slider {
     width: 100%;
+    height: 300px;
   }
 
   .banner-back,
@@ -202,5 +275,25 @@ input:focus {
 
   .details {
     text-align: center;
+  }
+
+  /* SIMILAR PRODUCTS */
+  .similar {
+    width: 100%;
+    padding: 2rem;
+    padding-block: 4rem;
+    gap: 2rem;
+  }
+
+  .products {
+    gap: 2rem;
+  }
+
+  .product-card {
+    gap: 1rem;
+  }
+
+  .product-card-image {
+    height: 300px;
   }
 }
