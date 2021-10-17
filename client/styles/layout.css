@@ -240,6 +240,15 @@ a {
   transition: all 0.2s ease;
 }
 
+.checkout-disabled {
+  margin-bottom: 0.5rem;
+  background-color: #ca0a0041;
+  font-size: 1.2rem;
+  padding: 0.6rem;
+  text-align: center;
+  display: none;
+}
+
 hr {
   border-top: none;
   border-bottom: 0.5px solid #d6bbd3;
@@ -473,6 +482,10 @@ nav {
 
   .checkout-btn {
     font-size: 10px;
+  }
+
+  .checkout-disabled {
+    font-size: 1rem;
   }
 
   /* NAVBAR */

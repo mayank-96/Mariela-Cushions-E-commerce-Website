@@ -94,6 +94,7 @@ document.getElementById("cart").addEventListener("click", function (e) {
 // close the cart window ----------------------------------------------------
 function closeCart() {
   document.getElementById("cart-window").style.display = "none";
+  document.getElementById("checkout-disabled").style.display = "none";
 }
 
 // open the cart window ----------------------------------------------------
@@ -197,4 +198,9 @@ async function changeQuantity(direction, id) {
 
   quantity_value.innerHTML = quantity;
   calculateSubtotal();
+}
+
+// DISABLED BTN
+function checkoutBtn() {
+  document.getElementById("checkout-disabled").style.display = "block";
 }
